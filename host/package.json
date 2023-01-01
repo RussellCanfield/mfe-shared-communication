@@ -1,20 +1,23 @@
 {
-  "name": "host",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "webpack-cli serve",
-    "build": "webpack --mode production",
-    "serve": "serve dist -p 3001",
-    "clean": "rm -rf dist"
-  },
-  "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "eventemitter3": "4.0.7"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+	"name": "host",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "webpack-cli serve",
+		"build": "webpack --mode production",
+		"serve": "serve dist -p 3001",
+		"clean": "rm -rf dist"
+	},
+	"dependencies": {
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"eventemitter3": "4.0.7",
+		"@module-federation/utilities": "1.1.0",
+		"@reduxjs/toolkit": "1.9.1",
+		"react-redux": "8.0.5"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
 }
