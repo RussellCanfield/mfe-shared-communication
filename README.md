@@ -1,4 +1,4 @@
-# mfe-shared-communication
+# Microfrontends Shared Communication
 
 This repo demonstrates some patterns for sharing state, or using event driven communication between Microfrontends. The examples include:
 
