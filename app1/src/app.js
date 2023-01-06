@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Provider } from "react-redux";
-import Counter from "./counter";
+import Counter from "../../shared/components/counter";
+import EventCounter from "../../shared/components/eventCounter";
 
 const App = ({ store }) => {
 	useEffect(() => {
@@ -17,10 +18,8 @@ const App = ({ store }) => {
 			{!store && <></>}
 			{store && (
 				<Provider store={store}>
-					<span>I am remote - my counter value: </span>
-					<span>
-						<Counter />
-					</span>
+					<Counter appName="Remote" />
+					<EventCounter appName="Remote" />
 				</Provider>
 			)}
 		</div>
