@@ -1,4 +1,4 @@
-import { useContext, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import { EventStore } from "../events";
 
 const useEventStore = () => {
@@ -7,11 +7,12 @@ const useEventStore = () => {
 		EventStore.getState
 	);
 
-	const { increment } = EventStore;
+	const { increment, setCounterValue } = EventStore;
 
 	return {
 		state,
 		increment,
+		setCounterValue,
 	};
 };
 
