@@ -5,6 +5,11 @@ let state = {
 	},
 };
 
+const saveState = (state) => {
+	window.EVENT_STORE = structuredClone(state);
+	disptach();
+};
+
 export const EventStore = {
 	getState() {
 		//Sync store across remotes
@@ -17,16 +22,22 @@ export const EventStore = {
 		const { counter } = state;
 		counter.count++;
 		state = { ...state, counter: { ...counter } };
-		window.EVENT_STORE = state;
-		disptach();
+		saveState(state);
+	},
+	setCounterValue(value) {
+		const { counter } = state;
+		counter.count = value;
+		state = { ...state, counter: { ...counter } };
+		saveState(state);
 	},
 	subscribe(listener) {
+		console.log("sub: ", listener);
 		//Sync listeners across remotes, share a singleton object
-		if (listeners.length === 0 && window.EVENT_LISTENERS) {
-			listeners = window.EVENT_LISTENERS;
-		} else {
-			listeners = [...listeners, listener];
+		if (window.EVENT_LISTENERS) {
+			listeners = [...window.EVENT_LISTENERS];
 		}
+
+		listeners = [...listeners, listener];
 		window.EVENT_LISTENERS = listeners;
 		return () => {
 			listeners = listeners.filter((l) => l !== listener);
@@ -35,7 +46,7 @@ export const EventStore = {
 };
 
 const disptach = () => {
-	for (let listener of listeners) {
+	for (let listener of window.EVENT_LISTENERS) {
 		listener();
 	}
 };
