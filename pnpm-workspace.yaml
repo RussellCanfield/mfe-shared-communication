@@ -1,4 +1,4 @@
 packages:
     - "host"
-    - "remote"
+    - "app1"
     - "shared"

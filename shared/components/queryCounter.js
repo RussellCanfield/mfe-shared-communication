@@ -5,7 +5,7 @@ const QueryCounter = () => {
 	const { data, increment } = useQueryCounter();
 
 	const incrementCounter = () => {
-		increment(Number(data) + 1);
+		increment(Number(data ?? 0) + 1);
 	};
 
 	return (

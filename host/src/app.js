@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { LoggingProvider } from "../context/loggingProvider";
 import { importRemote } from "@module-federation/utilities";
+import { Link } from "react-router-dom";
 import { store } from "./store";
 import Counter from "../../shared/components/counter";
 import EventCounter from "../../shared/components/eventCounter";
@@ -21,9 +22,11 @@ const RemoteApp = React.lazy(() =>
 	})
 );
 
+//The query lazy route should not re-fetch.
 const App = () => {
 	return (
 		<LoggingProvider>
+			<Link to="query">Query Lazy Route</Link>
 			<Counter appName="Host" />
 			<EventCounter appName="Host" />
 			<QueryCounter />

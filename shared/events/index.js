@@ -1,9 +1,11 @@
 let listeners = [];
-let state = {
+const defaultState = {
 	counter: {
 		count: 0,
 	},
 };
+
+let state = structuredClone(defaultState);
 
 const saveState = (state) => {
 	window.EVENT_STORE = structuredClone(state);
@@ -31,7 +33,6 @@ export const EventStore = {
 		saveState(state);
 	},
 	subscribe(listener) {
-		console.log("sub: ", listener);
 		//Sync listeners across remotes, share a singleton object
 		if (window.EVENT_LISTENERS) {
 			listeners = [...window.EVENT_LISTENERS];
