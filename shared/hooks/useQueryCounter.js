@@ -6,13 +6,6 @@ const useQueryCounter = () => {
 	const { state, setCounterValue } = useEventStore();
 	const queryClient = useQueryClient();
 
-	useEffect(() => {
-		queryClient.setQueryData(["counterData"], (oldValue) => {
-			console.log("vals: ", oldValue, state.counter.count);
-			return state.counter.count;
-		});
-	}, [state]);
-
 	const { isLoading, error, data } = useQuery({
 		queryKey: ["counterData"],
 		queryFn: () => {
@@ -33,6 +26,10 @@ const useQueryCounter = () => {
 			setCounterValue(newValue);
 		},
 	});
+
+	useEffect(() => {
+		queryClient.setQueryData(["counterData"], (_) => state.counter.count);
+	}, [state.counter.count]);
 
 	return {
 		isLoading,
