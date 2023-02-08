@@ -7,12 +7,13 @@ const useEventStore = () => {
 		EventStore.getState
 	);
 
-	const { increment, setCounterValue } = EventStore;
+	const { increment, setCounterValue, getRemoteData } = EventStore;
 
 	return {
 		state,
 		increment,
 		setCounterValue,
+		getRemoteData,
 	};
 };
 

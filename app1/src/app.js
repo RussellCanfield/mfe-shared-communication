@@ -4,6 +4,7 @@ import Counter from "../../shared/components/counter";
 import EventCounter from "../../shared/components/eventCounter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import QueryCounter from "../../shared/components/queryCounter";
+import RemoteData from "../../shared/components/remoteData";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -34,6 +35,7 @@ const App = ({ store }) => {
 						<Counter appName="Remote" />
 						<EventCounter appName="Remote" />
 						<QueryCounter />
+						<RemoteData />
 					</Provider>
 				</QueryClientProvider>
 			)}

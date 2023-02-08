@@ -6,6 +6,7 @@ import { store } from "./store";
 import Counter from "../../shared/components/counter";
 import EventCounter from "../../shared/components/eventCounter";
 import QueryCounter from "../../shared/components/queryCounter";
+import RemoteData from "../../shared/components/remoteData";
 
 //Load module from configuration service
 const GetStuff = async (input) => {
@@ -30,6 +31,7 @@ const App = () => {
 			<Counter appName="Host" />
 			<EventCounter appName="Host" />
 			<QueryCounter />
+			<RemoteData />
 			<div style={{ margin: "2rem" }}></div>
 			<Suspense>
 				<RemoteApp store={store} />

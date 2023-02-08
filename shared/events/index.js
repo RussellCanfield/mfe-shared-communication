@@ -3,6 +3,10 @@ const defaultState = {
 	counter: {
 		count: 0,
 	},
+	remote: {
+		data: undefined,
+		isFetching: false,
+	},
 };
 
 let state = structuredClone(defaultState);
@@ -31,6 +35,22 @@ export const EventStore = {
 		counter.count = value;
 		state = { ...state, counter: { ...counter } };
 		saveState(state);
+	},
+	getRemoteData() {
+		const { remote } = state;
+
+		if (remote.isFetching) return;
+
+		remote.isFetching = true;
+
+		//simulate delay.
+		setTimeout(() => {
+			console.log("Doing my async stuff for RemoteData");
+			remote.isFetching = false;
+			remote.data = "Hurray!";
+			state = { ...state, remote: { ...remote } };
+			saveState(state);
+		}, 1000);
 	},
 	subscribe(listener) {
 		//Sync listeners across remotes, share a singleton object

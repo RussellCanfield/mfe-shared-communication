@@ -9,7 +9,6 @@ const useQueryCounter = () => {
 	const { isLoading, error, data } = useQuery({
 		queryKey: ["counterData"],
 		queryFn: () => {
-			console.log("get query data");
 			return Promise.resolve(1);
 		},
 		onSuccess: (newValue) => {
